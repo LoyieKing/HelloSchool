@@ -12,11 +12,13 @@
 
     <mvc:resources location="/static/" mapping="/static/**"/>
     <mvc:annotation-driven/>
-    <context:component-scan base-package="org.school.controller" />
+    <context:component-scan base-package="org.school.controller"/>
+
 
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-        <property name="prefix" value="/WEB-INF/view/" />
-        <property name="suffix" value=".jsp" />
+        <property name="prefix" value="/WEB-INF/view/"/>
+        <property name="suffix" value=".jsp"/>
     </bean>
+
 
 </beans>

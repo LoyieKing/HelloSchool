@@ -27,6 +27,11 @@
           <element id="library" level="project" name="Maven: org.springframework:spring-messaging:4.3.18.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework:spring-oxm:4.3.18.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework:spring-test:4.3.18.RELEASE" />
+          <element id="library" level="project" name="Maven: aopalliance:aopalliance:1.0" />
+          <element id="library" level="project" name="Maven: org.apache.commons:commons-dbcp2:2.6.0" />
+          <element id="library" level="project" name="Maven: org.apache.commons:commons-pool2:2.6.1" />
+          <element id="library" level="project" name="Maven: org.slf4j:slf4j-api:1.5.8" />
+          <element id="library" level="project" name="Hibernate" />
         </element>
       </element>
     </root>
