@@ -6,7 +6,7 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name = "College", schema = "dbo", catalog = "myschool")
+@Table(name = "College", schema = "schemas", catalog = "")
 public class CollegeModel {
     private String collegeId;
     private String collegeName;

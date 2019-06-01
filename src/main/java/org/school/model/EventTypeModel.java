@@ -3,7 +3,7 @@ package org.school.model;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "EventType", schema = "dbo", catalog = "myschool")
+@Table(name = "EventType", schema = "myschool", catalog = "")
 public class EventTypeModel {
     private short eventTypeId;
     private String eventName;

@@ -1,36 +1,23 @@
 package org.school.model;
 
+import javax.jws.soap.SOAPBinding;
 import javax.persistence.*;
 
 
 @Entity
-@Table(name = "GroupUser", schema = "dbo", catalog = "myschool")
-@IdClass(GroupUserModelPK.class)
+@Table(name = "GroupUser", schema = "myschool", catalog = "")
 public class GroupUserModel {
-    private GroupModel group;
-    private UserModel user;
+
+    @EmbeddedId
+    private GroupUserModelPK groupUserModelPK;
     private short priority;
 
-    @Id
-    @ManyToOne
-    @JoinColumn(name = "groupID")
-    public GroupModel getGroup() {
-        return group;
+    public GroupUserModelPK getGroupUserModelPK() {
+        return groupUserModelPK;
     }
 
-    public void setGroup(GroupModel group) {
-        this.group = group;
-    }
-
-    @Id
-    @ManyToOne
-    @JoinColumn(name = "userID")
-    public UserModel getUser() {
-        return user;
-    }
-
-    public void setUser(UserModel user) {
-        this.user = user;
+    public void setGroupUserModelPK(GroupUserModelPK groupUserModelPK) {
+        this.groupUserModelPK = groupUserModelPK;
     }
 
     @Override
@@ -38,13 +25,12 @@ public class GroupUserModel {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         GroupUserModel that = (GroupUserModel) o;
-        return group.equals(that.group) &&
-                user.equals(that.user);
+        return groupUserModelPK.equals(that.groupUserModelPK);
     }
 
     @Override
     public int hashCode() {
-        return group.hashCode()*31+user.hashCode();
+        return groupUserModelPK.hashCode();
     }
 
     @Basic

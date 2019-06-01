@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name = "User", schema = "dbo", catalog = "myschool")
+@Table(name = "User", schema = "myschool", catalog = "")
 public class UserModel {
     private String userId;
     private UserTypeModel userType;
@@ -112,7 +112,7 @@ public class UserModel {
     }
 
 
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "groupUserModelPK.user")
     public List<GroupUserModel> getGroupUsers() {
         return groupUsers;
     }

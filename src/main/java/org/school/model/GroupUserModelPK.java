@@ -1,31 +1,35 @@
 package org.school.model;
 
-import javax.persistence.Column;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.io.Serializable;
 
+@Embeddable
 public class GroupUserModelPK implements Serializable {
-    private String groupId;
-    private String userId;
 
-    @Column(name = "groupID")
-    @Id
-    public String getGroupId() {
-        return groupId;
+
+    @ManyToOne()
+    @JoinColumn(name="groupID")
+    private GroupModel group;
+
+
+    @ManyToOne
+    @JoinColumn(name="userID")
+    private UserModel user;
+
+    public GroupModel getGroup() {
+        return group;
     }
 
-    public void setGroupId(String groupId) {
-        this.groupId = groupId;
+    public void setGroup(GroupModel group) {
+        this.group = group;
     }
 
-    @Column(name = "userID")
-    @Id
-    public String getUserId() {
-        return userId;
+    public UserModel getUser() {
+        return user;
     }
 
-    public void setUserId(String userId) {
-        this.userId = userId;
+    public void setUser(UserModel user) {
+        this.user = user;
     }
 
     @Override
@@ -35,16 +39,16 @@ public class GroupUserModelPK implements Serializable {
 
         GroupUserModelPK that = (GroupUserModelPK) o;
 
-        if (groupId != null ? !groupId.equals(that.groupId) : that.groupId != null) return false;
-        if (userId != null ? !userId.equals(that.userId) : that.userId != null) return false;
+        if (group != null ? !group.equals(that.group) : that.group != null) return false;
+        if (user != null ? !user.equals(that.user) : that.user != null) return false;
 
         return true;
     }
 
     @Override
     public int hashCode() {
-        int result = groupId != null ? groupId.hashCode() : 0;
-        result = 31 * result + (userId != null ? userId.hashCode() : 0);
+        int result = group != null ? group.hashCode() : 0;
+        result = 31 * result + (user != null ? user.hashCode() : 0);
         return result;
     }
 }

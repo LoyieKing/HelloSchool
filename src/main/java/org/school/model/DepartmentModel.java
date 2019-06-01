@@ -3,7 +3,7 @@ package org.school.model;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "Department", schema = "dbo", catalog = "myschool")
+@Table(name = "Department", schema = "myschool", catalog = "")
 public class DepartmentModel {
     private String departmentId;
     private String departmentName;

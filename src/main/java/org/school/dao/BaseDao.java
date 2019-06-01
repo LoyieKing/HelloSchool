@@ -13,6 +13,7 @@ import java.util.List;
 public class BaseDao implements IBaseDao {
 
     @Autowired
+    @Qualifier("sessionFactory")
     private SessionFactory sessionFactory;
 
     public List<?> list(Class clazz) {

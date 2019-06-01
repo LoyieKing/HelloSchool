@@ -3,7 +3,7 @@ package org.school.model;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "UserType", schema = "dbo", catalog = "myschool")
+@Table(name = "UserType", schema = "myschool", catalog = "")
 public class UserTypeModel {
     private short userTypeId;
     private String userTypeName;

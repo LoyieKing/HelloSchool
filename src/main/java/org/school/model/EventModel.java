@@ -6,7 +6,7 @@ import java.sql.Timestamp;
 import java.util.List;
 
 @Entity
-@Table(name = "Event", schema = "dbo", catalog = "myschool")
+@Table(name = "Event", schema = "myschool", catalog = "")
 public class EventModel {
     private String eventId;
     private String eventName;
@@ -36,7 +36,7 @@ public class EventModel {
     }
 
     @ManyToOne
-    @JoinColumn(name = "eventID")
+    @JoinColumn(name = "eventTypeID")
     public EventTypeModel getEventType() {
         return eventType;
     }
