@@ -11,6 +11,25 @@ public class UserTypeModel {
     private Boolean canEditClass;
     private Boolean canEditCourse;
 
+    public static final UserTypeModel VISITOR;
+    public static final UserTypeModel STUDENT;
+
+    static {
+        VISITOR = new UserTypeModel();
+        VISITOR.userTypeId = 0;
+        VISITOR.userTypeName = "游客";
+        VISITOR.isAdmin = false;
+        VISITOR.canEditClass = false;
+        VISITOR.canEditCourse = false;
+
+        STUDENT = new UserTypeModel();
+        STUDENT.userTypeId = 1;
+        STUDENT.userTypeName = "学生";
+        STUDENT.isAdmin = false;
+        STUDENT.canEditClass = false;
+        STUDENT.canEditCourse = false;
+    }
+
     @Id
     @Column(name = "userTypeID")
     public short getUserTypeId() {
