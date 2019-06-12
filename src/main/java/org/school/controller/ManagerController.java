@@ -3,6 +3,7 @@ package org.school.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.school.model.entity.UserModel;
+import org.school.model.result.Group;
 import org.school.service.IGroupService;
 import org.school.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,9 +48,9 @@ public class ManagerController {
         return view;
     }
 
-    @RequestMapping(value = "/", method = RequestMethod.PUT)
+    @RequestMapping(value = "/user", method = RequestMethod.PUT)
     @ResponseBody
-    public HashMap<String, Object> add(@RequestBody String userstr) {
+    public HashMap<String, Object> adduser(@RequestBody String userstr) {
         HashMap<String, Object> result = new HashMap<String, Object>();
 
         if (userstr == null) {
@@ -101,6 +102,38 @@ public class ManagerController {
                 result.put("message", "注册时发生错误：" + e.getMessage());
             }
             result.put("success", true);
+        }
+        return result;
+    }
+
+    @RequestMapping(value = "/group",method = RequestMethod.PUT)
+    public HashMap<String,Object> groupnew(HttpServletRequest request, @RequestBody Group group)
+    {
+        HashMap<String,Object> result = new HashMap<String, Object>();
+        try {
+            groupService.AddGroup(group);
+            result.put("success",true);
+        }
+        catch (Exception e)
+        {
+            result.put("success",false);
+            result.put("message",e.getMessage());
+        }
+        return result;
+    }
+
+    @RequestMapping(value = "/group",method = RequestMethod.POST)
+    public HashMap<String,Object> groupupdate(HttpServletRequest request, @RequestBody Group group)
+    {
+        HashMap<String,Object> result = new HashMap<String, Object>();
+        try {
+            groupService.UpdateGroup(group);
+            result.put("success",true);
+        }
+        catch (Exception e)
+        {
+            result.put("success",false);
+            result.put("message",e.getMessage());
         }
         return result;
     }
