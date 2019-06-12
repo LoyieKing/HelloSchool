@@ -1,15 +1,17 @@
-package org.school.model;
+package org.school.model.entity;
 
 import javax.persistence.*;
 import java.util.List;
 
 @Entity
 @Table(name = "Group", schema = "myschool", catalog = "")
-public class GroupModel {
+public class Group {
     private String groupId;
     private String groupName;
     private String groupDescription;
-    private List<GroupUserModel> groupUsers;
+    private List<GroupUser> groupUsers;
+
+    private List<Event> events;
 
     @Id
     @Column(name = "groupID")
@@ -46,7 +48,7 @@ public class GroupModel {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        GroupModel that = (GroupModel) o;
+        Group that = (Group) o;
 
         if (groupId != null ? !groupId.equals(that.groupId) : that.groupId != null) return false;
         if (groupName != null ? !groupName.equals(that.groupName) : that.groupName != null) return false;
@@ -65,13 +67,23 @@ public class GroupModel {
     }
 
 
-    @OneToMany(mappedBy = "groupUserModelPK.group")
-    public List<GroupUserModel> getGroupUsers() {
+    @OneToMany(mappedBy = "groupUserPK.group")
+    public List<GroupUser> getGroupUsers() {
         return groupUsers;
     }
 
-    public void setGroupUsers(List<GroupUserModel> users) {
+    public void setGroupUsers(List<GroupUser> users) {
         this.groupUsers = users;
+    }
+
+
+    @ManyToMany(mappedBy = "groups")
+    public List<Event> getEvents() {
+        return events;
+    }
+
+    public void setEvents(List<Event> events) {
+        this.events = events;
     }
 
 }

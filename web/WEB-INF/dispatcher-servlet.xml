@@ -14,6 +14,16 @@
     <mvc:annotation-driven/>
     <context:component-scan base-package="org.school.controller"/>
 
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/manager/*"/>
+            <bean class="org.school.interceptor.ManagerInterceptor"/>
+        </mvc:interceptor>
+        <mvc:interceptor>
+            <mvc:mapping path="/classtable/*"/>
+            <bean class="org.school.interceptor.LoginInterceptor"/>
+        </mvc:interceptor>
+    </mvc:interceptors>
 
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix" value="/WEB-INF/view/"/>

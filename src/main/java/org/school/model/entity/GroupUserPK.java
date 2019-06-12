@@ -1,26 +1,26 @@
-package org.school.model;
+package org.school.model.entity;
 
 import javax.persistence.*;
 import java.io.Serializable;
 
 @Embeddable
-public class GroupUserModelPK implements Serializable {
+public class GroupUserPK implements Serializable {
 
 
     @ManyToOne()
     @JoinColumn(name="groupID")
-    private GroupModel group;
+    private Group group;
 
 
     @ManyToOne
     @JoinColumn(name="userID")
     private UserModel user;
 
-    public GroupModel getGroup() {
+    public Group getGroup() {
         return group;
     }
 
-    public void setGroup(GroupModel group) {
+    public void setGroup(Group group) {
         this.group = group;
     }
 
@@ -37,7 +37,7 @@ public class GroupUserModelPK implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        GroupUserModelPK that = (GroupUserModelPK) o;
+        GroupUserPK that = (GroupUserPK) o;
 
         if (group != null ? !group.equals(that.group) : that.group != null) return false;
         if (user != null ? !user.equals(that.user) : that.user != null) return false;

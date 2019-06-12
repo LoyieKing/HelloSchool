@@ -1,19 +1,19 @@
-package org.school.model;
+package org.school.model.entity;
 
-import javax.naming.Name;
 import javax.persistence.*;
 import java.sql.Timestamp;
 import java.util.List;
 
 @Entity
 @Table(name = "Event", schema = "myschool", catalog = "")
-public class EventModel {
+public class Event {
     private String eventId;
     private String eventName;
-    private EventTypeModel eventType;
-    private Timestamp eventDate;
+    private EventType eventType;
+    private String eventTime;
     private String eventDescription;
     private List<UserModel> hosts;
+    private List<Group> groups;
 
     @Id
     @Column(name = "eventID")
@@ -37,22 +37,22 @@ public class EventModel {
 
     @ManyToOne
     @JoinColumn(name = "eventTypeID")
-    public EventTypeModel getEventType() {
+    public EventType getEventType() {
         return eventType;
     }
 
-    public void setEventType(EventTypeModel eventType) {
+    public void setEventType(EventType eventType) {
         this.eventType = eventType;
     }
 
     @Basic
-    @Column(name = "eventDate")
-    public Timestamp getEventDate() {
-        return eventDate;
+    @Column(name = "eventTime")
+    public String getEventTime() {
+        return eventTime;
     }
 
-    public void setEventDate(Timestamp eventDate) {
-        this.eventDate = eventDate;
+    public void setEventTime(String eventTime) {
+        this.eventTime = eventTime;
     }
 
     @Basic
@@ -70,7 +70,7 @@ public class EventModel {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        EventModel that = (EventModel) o;
+        Event that = (Event) o;
 
 
         return eventId.equals(that.eventId);
@@ -81,7 +81,7 @@ public class EventModel {
         int result = eventId != null ? eventId.hashCode() : 0;
         result = 31 * result + (eventName != null ? eventName.hashCode() : 0);
         result = 31 * result + (eventType != null ? eventType.hashCode() : 0);
-        result = 31 * result + (eventDate != null ? eventDate.hashCode() : 0);
+        result = 31 * result + (eventTime != null ? eventTime.hashCode() : 0);
         return result;
     }
 
@@ -96,4 +96,12 @@ public class EventModel {
     public void setHosts(List<UserModel> hosts) {
         this.hosts = hosts;
     }
+
+    @ManyToMany
+    @JoinTable(name = "GroupEvent",
+    joinColumns = {@JoinColumn(name = "eventID")},
+    inverseJoinColumns = {@JoinColumn(name = "groupID")})
+    public List<Group> getGroups(){return groups;}
+
+    public void setGroups(List<Group> groups){this.groups = groups;}
 }

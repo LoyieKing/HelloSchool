@@ -1,13 +1,13 @@
-package org.school.model;
+package org.school.model.entity;
 
 import javax.persistence.*;
 
 @Entity
 @Table(name = "Department", schema = "myschool", catalog = "")
-public class DepartmentModel {
+public class Department {
     private String departmentId;
     private String departmentName;
-    private CollegeModel college;
+    private College college;
 
     @Id
     @Column(name = "departmentID")
@@ -34,7 +34,7 @@ public class DepartmentModel {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        DepartmentModel that = (DepartmentModel) o;
+        Department that = (Department) o;
 
         return departmentId.equals(that.departmentId);
     }
@@ -49,11 +49,11 @@ public class DepartmentModel {
 
     @ManyToOne
     @JoinColumn(name = "collegeID")
-    public CollegeModel getCollege() {
+    public College getCollege() {
         return college;
     }
 
-    public void setCollege(CollegeModel college) {
+    public void setCollege(College college) {
         this.college = college;
     }
 

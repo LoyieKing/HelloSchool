@@ -1,4 +1,4 @@
-package org.school.model;
+package org.school.model.entity;
 
 import javax.persistence.*;
 import java.util.List;
@@ -7,14 +7,14 @@ import java.util.List;
 @Table(name = "User", schema = "myschool", catalog = "")
 public class UserModel {
     private String userId;
-    private UserTypeModel userType;
+    private UserType userType;
     private String schoolNumber;
     private String userName;
     private String phone;
     private String email;
     private String password;
-    private List<EventModel> events;
-    private List<GroupUserModel> groupUsers;
+    private List<Event> events;
+    private List<GroupUser> groupUsers;
 
     @Id
     @Column(name = "userID")
@@ -28,9 +28,9 @@ public class UserModel {
 
     @ManyToOne
     @JoinColumn(name="userTypeId")
-    public UserTypeModel getUserType(){return userType;}
+    public UserType getUserType(){return userType;}
 
-    public void setUserType(UserTypeModel userType){this.userType = userType;}
+    public void setUserType(UserType userType){this.userType = userType;}
 
     @Basic
     @Column(name = "schoolNumber")
@@ -103,21 +103,21 @@ public class UserModel {
     }
 
     @ManyToMany(mappedBy = "hosts")
-    public List<EventModel> getEvents() {
+    public List<Event> getEvents() {
         return events;
     }
 
-    public void setEvents(List<EventModel> events) {
+    public void setEvents(List<Event> events) {
         this.events = events;
     }
 
 
-    @OneToMany(mappedBy = "groupUserModelPK.user")
-    public List<GroupUserModel> getGroupUsers() {
+    @OneToMany(mappedBy = "groupUserPK.user")
+    public List<GroupUser> getGroupUsers() {
         return groupUsers;
     }
 
-    public void setGroupUsers(List<GroupUserModel> groups) {
+    public void setGroupUsers(List<GroupUser> groups) {
         this.groupUsers = groups;
     }
 }

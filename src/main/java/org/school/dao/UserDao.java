@@ -2,7 +2,7 @@ package org.school.dao;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.school.model.UserModel;
+import org.school.model.entity.UserModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
@@ -30,6 +30,13 @@ public class UserDao {
                 .createQuery(queryString)
                 .setString("info", userinfo)
                 .uniqueResult();
+    }
+
+    public List<UserModel> ListAll(){
+        String queryString  = "FROM UserModel";
+        return (List<UserModel>)getSession()
+                .createQuery(queryString)
+                .list();
     }
 
     public void UpdateUser(UserModel user)

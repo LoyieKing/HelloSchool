@@ -1,28 +1,28 @@
-package org.school.model;
+package org.school.model.entity;
 
 import javax.persistence.*;
 
 @Entity
 @Table(name = "UserType", schema = "myschool", catalog = "")
-public class UserTypeModel {
+public class UserType {
     private short userTypeId;
     private String userTypeName;
     private Boolean isAdmin;
     private Boolean canEditClass;
     private Boolean canEditCourse;
 
-    public static final UserTypeModel VISITOR;
-    public static final UserTypeModel STUDENT;
+    public static final UserType VISITOR;
+    public static final UserType STUDENT;
 
     static {
-        VISITOR = new UserTypeModel();
+        VISITOR = new UserType();
         VISITOR.userTypeId = 0;
         VISITOR.userTypeName = "游客";
         VISITOR.isAdmin = false;
         VISITOR.canEditClass = false;
         VISITOR.canEditCourse = false;
 
-        STUDENT = new UserTypeModel();
+        STUDENT = new UserType();
         STUDENT.userTypeId = 1;
         STUDENT.userTypeName = "学生";
         STUDENT.isAdmin = false;
@@ -85,7 +85,7 @@ public class UserTypeModel {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        UserTypeModel that = (UserTypeModel) o;
+        UserType that = (UserType) o;
 
         if (userTypeId != that.userTypeId) return false;
         if (userTypeName != null ? !userTypeName.equals(that.userTypeName) : that.userTypeName != null) return false;

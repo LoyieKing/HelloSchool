@@ -1,10 +1,10 @@
-package org.school.model;
+package org.school.model.entity;
 
 import javax.persistence.*;
 
 @Entity
 @Table(name = "EventType", schema = "myschool", catalog = "")
-public class EventTypeModel {
+public class EventType {
     private short eventTypeId;
     private String eventName;
     private Short priority;
@@ -44,7 +44,7 @@ public class EventTypeModel {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        EventTypeModel that = (EventTypeModel) o;
+        EventType that = (EventType) o;
 
         if (eventTypeId != that.eventTypeId) return false;
         if (eventName != null ? !eventName.equals(that.eventName) : that.eventName != null) return false;

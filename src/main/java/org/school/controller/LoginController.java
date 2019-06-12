@@ -1,9 +1,8 @@
 package org.school.controller;
 
-import org.school.model.UserModel;
-import org.school.model.UserTypeModel;
+import org.school.model.entity.UserModel;
+import org.school.model.entity.UserType;
 import org.school.service.IUserService;
-import org.school.service.impl.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,7 +15,7 @@ import java.util.Map;
 
 
 @Controller
-@RequestMapping("/Login")
+@RequestMapping("/login")
 public class LoginController {
 
     @Autowired
@@ -30,7 +29,7 @@ public class LoginController {
 
     @RequestMapping(value = "/",method = RequestMethod.POST)
     @ResponseBody
-    public Map<String,Object> index(HttpServletRequest request)
+    public Map<String,Object> login(HttpServletRequest request)
     {
         Map<String,Object> result = new HashMap<String, Object>();
         String username = request.getParameter("username");
@@ -113,7 +112,7 @@ public class LoginController {
         user.setPassword(password);
         user.setUserName(username);
         user.setEmail(email);
-        user.setUserType(UserTypeModel.VISITOR);
+        user.setUserType(UserType.VISITOR);
 
         try {
             userService.Register(user);

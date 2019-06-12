@@ -1,17 +1,15 @@
-package org.school.model;
-
-import org.springframework.web.bind.annotation.Mapping;
+package org.school.model.entity;
 
 import javax.persistence.*;
 import java.util.List;
 
 @Entity
 @Table(name = "College", schema = "schemas", catalog = "")
-public class CollegeModel {
+public class College {
     private String collegeId;
     private String collegeName;
     private UserModel user;
-    private List<DepartmentModel> departments;
+    private List<Department> departments;
     private String userId;
 
     @Id
@@ -39,7 +37,7 @@ public class CollegeModel {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        CollegeModel that = (CollegeModel) o;
+        College that = (College) o;
 
         return collegeId.equals(that.collegeId);
     }
@@ -63,11 +61,11 @@ public class CollegeModel {
     }
 
     @OneToMany(mappedBy = "college")
-    public List<DepartmentModel> getDepartments() {
+    public List<Department> getDepartments() {
         return departments;
     }
 
-    public void setDepartments(List<DepartmentModel> departments) {
+    public void setDepartments(List<Department> departments) {
         this.departments = departments;
     }
 
