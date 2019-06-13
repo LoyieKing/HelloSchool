@@ -1,4 +1,4 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+﻿<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -24,6 +24,12 @@
             <input type="password" name="pwd" id="pwd" placeholder="密码" maxlength="16" />
         </div>
         <input class="button" type="button" value="登录" onclick="login_onclick()" />
+        
+        <div class="href">
+            <i class="fa fa-mail-forward"></i>
+            <a href="register.html">游客注册</a>
+        </div>
+
     </div>
 </body>
 

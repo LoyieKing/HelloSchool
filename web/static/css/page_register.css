@@ -1,0 +1,85 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-size: auto;
+}
+
+.center {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    
+    /* height: 400px; */
+    transform: translate(-50%, -50%);
+}
+
+.register-box {
+    width: 360px;
+    padding: 16px;
+    background-color: rgba(0, 0, 0, 0.5);
+    text-align: left;
+    color: aliceblue;
+    border-radius: 4px;
+}
+
+.register-box .header h1 {
+    float: left;
+    border-bottom: 4px solid chartreuse;
+    margin-left: 0px;
+    margin-top: 4px;
+    margin-bottom: 16px;
+}
+
+.register-box .textbox {
+    clear: both;
+    padding: none;
+    border: none;
+    margin: 12px 0px;
+    padding: 4px 0;
+    border-bottom: 2px solid chartreuse;
+    
+}
+
+.register-box .textbox i {
+    margin-left: 4px;
+}
+
+.register-box .textbox input {
+    border: none;
+    padding: none;
+    outline: none;
+    background: none;
+    color: white;
+    width: 306px;
+}
+
+
+.register-box .button {
+    border: none;
+    outline: none;
+    border: 2px solid chartreuse;
+    background: chartreuse;
+    color: black;
+    margin-top: 16px;
+    padding: 4px 12px;
+    width: 100%;
+    cursor: pointer;
+}
+
+
+.register-box .button:hover {
+    transition: 0.1s;
+    background: none;
+    color: white;
+}
+
+.register-box .href{
+    float: right;
+    font-size: 20px;
+    margin-top:10px;
+}
+
+.register-box .href:hover{
+    color:aqua;
+    text-decoration: none;
+}
